@@ -4,12 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Widget Tríptico - Portugal dos Pequenitos</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React & ReactDOM -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <!-- Babel para compilar JSX en el navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body class="bg-blue-50 m-0 p-0 overflow-x-hidden print:bg-white">
@@ -19,7 +16,7 @@
         const { useState } = React;
 
         // ==========================================
-        // ICONOS SVG (Sin dependencias externas)
+        // ICONOS SVG
         // ==========================================
         const IconProps = { fill: "none", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round", viewBox: "0 0 24 24" };
         const Castle = ({className}) => <svg className={className} {...IconProps}><path d="M22 20v-6a2 2 0 0 0-2-2h-3.83a2 2 0 0 1-1.42-.59L12 8.59l-2.75 2.83a2 2 0 0 1-1.42.59H4a2 2 0 0 0-2 2v6"/><path d="M15 14v4"/><path d="M9 14v4"/><path d="M12 2v3"/><path d="M11 2h2"/><path d="M22 20H2"/></svg>;
@@ -209,7 +206,7 @@
               </div>
               <div className="bg-blue-500 text-white p-8 rounded-t-[50px] text-center mt-auto shadow-[0_-10px_20px_rgba(0,0,0,0.1)] relative z-10 organic-shape-top">
                 <div className="flex flex-col gap-4 items-center">
-                  <a href="https://www.instagram.com/portugaldospequenitos/" className="flex items-center gap-2 font-bold text-lg hover:text-yellow-300 transition-colors bg-blue-600 px-4 py-2 rounded-full w-full justify-center shadow-inner">
+                  <a href="#" className="flex items-center gap-2 font-bold text-lg hover:text-yellow-300 transition-colors bg-blue-600 px-4 py-2 rounded-full w-full justify-center shadow-inner">
                     <Instagram className="w-6 h-6" /> @portugaldospequenitos
                   </a>
                   <a href="https://www.fbb.pt/" className="flex items-center gap-2 font-bold text-lg hover:text-yellow-300 transition-colors bg-blue-600 px-4 py-2 rounded-full w-full justify-center shadow-inner">
@@ -286,7 +283,7 @@
             </div>
 
             {/* PAINEL 3: Jogos */}
-            <div className="panel w-full md:w-1/3 relative p-6 flex flex-col border-x-4 border-orange-200 notebook-paper shadow-inner">
+            <div className="panel notebook-paper w-full md:w-1/3 relative p-6 flex flex-col border-x-4 border-orange-200 shadow-inner">
               <div className="text-center mb-6 mt-2 relative">
                 <h2 className="text-4xl font-title font-black text-blue-600 inline-block bg-white/80 px-6 py-2 rounded-2xl border-2 border-blue-200 transform -rotate-2">
                   {t.letsPlay}
@@ -311,7 +308,7 @@
                   })}
                 </div>
               </div>
-              <div className="bg-white/90 backdrop-blur-sm p-5 rounded-3xl shadow-md border-4 border-green-300 relative mt-auto transform -rotate-1">
+              <div className="bg-white/90 backdrop-blur-sm p-5 rounded-3xl shadow-md border-4 border-green-300 relative mt-4 transform -rotate-1">
                 <div className="absolute -top-4 -right-4 bg-green-400 text-green-900 w-10 h-10 flex items-center justify-center rounded-full font-black text-xl shadow-md transform rotate-12">2</div>
                 <h3 className="font-bold font-title text-xl text-green-700 mb-2 text-center">{t.hangman}</h3>
                 <p className="text-sm text-center text-green-900 mb-4 bg-green-50 p-2 rounded-xl font-bold border border-green-200">
@@ -325,20 +322,21 @@
                     <path d="M70,57 L70,80 M70,60 L50,75 M70,60 L90,75 M70,80 L55,105 M70,80 L85,105" className="opacity-20 stroke-dashed" />
                   </svg>
                 </div>
-                <div className="flex justify-center gap-1 sm:gap-2 flex-wrap mb-4">
+                {/* Se ha reducido ligeramente el tamaño para asegurar que nunca se rompan de línea al imprimir */}
+                <div className="flex justify-center gap-1 sm:gap-2 flex-wrap print:flex-nowrap mb-4">
                   {Array(t.hangmanSpaces).fill('').map((_, i) => (
-                    <div key={i} className="w-5 h-6 sm:w-6 sm:h-8 border-b-4 border-blue-500"></div>
+                    <div key={i} className="w-4 h-6 sm:w-5 sm:h-8 border-b-4 border-blue-500"></div>
                   ))}
                 </div>
-                <div className="flex flex-col items-center justify-center">
+                <div className="flex flex-col items-center justify-center pb-2">
                   <p className="text-[10px] text-gray-400 font-bold uppercase">{t.solution}</p>
-                  <p className="text-xs font-black text-gray-300 transform rotate-180 select-none">{t.hangmanAnswer}</p>
+                  <p className="text-xs font-black text-gray-300 transform rotate-180 select-none inline-block mt-1">{t.hangmanAnswer}</p>
                 </div>
               </div>
             </div>
 
             {/* PAINEL 4: Missão */}
-            <div className="panel w-full md:w-1/3 sunburst relative flex flex-col p-8 items-center text-center justify-center overflow-hidden border-l-4 border-orange-400">
+            <div className="panel sunburst w-full md:w-1/3 relative flex flex-col p-8 items-center text-center justify-center overflow-hidden border-l-4 border-orange-400">
               <div className="absolute top-10 left-10 w-4 h-4 bg-blue-500 rounded-full animate-ping"></div>
               <div className="absolute top-20 right-10 w-3 h-3 bg-pink-500 rounded-full animate-pulse"></div>
               <div className="absolute bottom-32 left-8 w-5 h-5 bg-green-500 rounded-full animate-bounce"></div>
@@ -381,12 +379,18 @@
                 @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;800;900&display=swap');
                 .font-title { font-family: 'Fredoka', sans-serif; }
                 .organic-shape-top { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); }
-                .sunburst { background: repeating-conic-gradient(from 0deg, #fbbf24 0deg 15deg, #f59e0b 15deg 30deg); }
-                .notebook-paper {
-                  background-color: #fff;
-                  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em);
-                  background-size: 100% 1.2em;
+                
+                /* Forzar los fondos por CSS añadiendo !important para sobrevivir a la impresora */
+                .sunburst { 
+                  background-color: #f59e0b !important;
+                  background-image: repeating-conic-gradient(from 0deg, #fbbf24 0deg 15deg, #f59e0b 15deg 30deg) !important; 
                 }
+                .notebook-paper {
+                  background-color: #fff !important;
+                  background-image: linear-gradient(90deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px), linear-gradient(#eee .1em, transparent .1em) !important;
+                  background-size: 100% 1.2em !important;
+                }
+                
                 @keyframes float { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
                 @keyframes float-slow { 0%, 100% { transform: translateX(0) translateY(0); } 50% { transform: translateX(10px) translateY(-5px); } }
                 .animate-float { animation: float 3s ease-in-out infinite; }
@@ -398,34 +402,34 @@
                     size: A4 landscape; 
                     margin: 0.5cm; 
                   }
-                  body, html { 
-                    background-color: white !important; 
-                    margin: 0 !important; 
-                    padding: 0 !important;
-                    /* Estas dos líneas son la magia para que la impresora respete los colores */
+                  /* Forzar al navegador a imprimir fondos y colores a toda costa */
+                  body, html, * { 
                     -webkit-print-color-adjust: exact !important; 
                     print-color-adjust: exact !important; 
+                    color-adjust: exact !important;
                   }
+                  body { background-color: white !important; margin: 0 !important; padding: 0 !important; }
                   .print-break { page-break-before: always; }
                   
                   /* Forzar el contenedor a ser un folio completo en horizontal */
                   .face-container {
                     display: flex !important;
                     flex-direction: row !important;
-                    width: 28.7cm !important; /* Ancho A4 menos márgenes */
-                    height: 20cm !important; /* Alto A4 menos márgenes */
+                    width: 100% !important; 
+                    height: 100% !important;
+                    min-height: 19cm !important;
                     page-break-after: always;
                     page-break-inside: avoid;
                     overflow: hidden;
                   }
                   
-                  /* Forzar las 3 columnas simétricas */
+                  /* Forzar las 3 columnas simétricas en el papel */
                   .panel {
                     width: 33.333333% !important;
                     height: 100% !important;
                     display: flex !important;
                     flex-direction: column !important;
-                    box-sizing: border-box;
+                    box-sizing: border-box !important;
                   }
                 }
               `}} />
@@ -437,20 +441,17 @@
                 </h1>
                 
                 <div className="flex flex-col md:flex-row gap-4 items-center">
-                  {/* Seletor de Idioma */}
                   <div className="flex bg-gray-100 p-1.5 rounded-2xl gap-2">
                     <button onClick={() => setLang('pt')} className={`px-4 py-1.5 rounded-xl font-bold transition-all ${lang === 'pt' ? 'bg-orange-500 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-200'}`}>PT</button>
                     <button onClick={() => setLang('en')} className={`px-4 py-1.5 rounded-xl font-bold transition-all ${lang === 'en' ? 'bg-blue-500 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-200'}`}>EN</button>
                     <button onClick={() => setLang('es')} className={`px-4 py-1.5 rounded-xl font-bold transition-all ${lang === 'es' ? 'bg-green-500 text-white shadow-lg' : 'text-gray-500 hover:bg-gray-200'}`}>ES</button>
                   </div>
 
-                  {/* Seletor de Face */}
                   <div className="flex bg-blue-100 p-1.5 rounded-2xl gap-2">
                     <button onClick={() => setView('exterior')} className={`px-4 py-1.5 rounded-xl font-bold transition-all ${view === 'exterior' ? 'bg-orange-500 text-white shadow-lg' : 'text-blue-700 hover:bg-blue-200'}`}>{t.outerFace}</button>
                     <button onClick={() => setView('interior')} className={`px-4 py-1.5 rounded-xl font-bold transition-all ${view === 'interior' ? 'bg-blue-500 text-white shadow-lg' : 'text-blue-700 hover:bg-blue-200'}`}>{t.innerFace}</button>
                   </div>
 
-                  {/* Botón Imprimir */}
                   <button onClick={handlePrint} className="flex items-center gap-2 bg-purple-500 hover:bg-purple-600 text-white px-5 py-2 rounded-xl font-bold transition-all shadow-md transform hover:scale-105">
                     <Printer className="w-5 h-5" />
                     <span>{t.print}</span>
